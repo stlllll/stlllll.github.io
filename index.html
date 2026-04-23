@@ -30,12 +30,12 @@
             padding: 0 1.5rem;
         }
 
-        /* header 区域 — 添加背景图 */
+        /* header 区域 — 背景图适配大尺寸 */
         header {
             position: relative;
             background: linear-gradient(135deg, rgba(15, 43, 61, 0.75) 0%, rgba(27, 74, 110, 0.85) 100%), url('background.png');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center;
             background-repeat: no-repeat;
             color: white;
             padding: 3rem 0 3.5rem;
@@ -43,7 +43,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.15);
         }
 
-        /* 可选：为增加文字清晰度，加轻微阴影 */
+        /* 文字阴影提升可读性 */
         header h1, header p {
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
@@ -449,7 +449,7 @@
 </nav>
 
 <div class="container">
-    <!-- About Section (已包含本科导师信息) -->
+    <!-- About Section -->
     <section id="about">
         <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
         <p style="font-size:1.05rem; margin-bottom:0.8rem;">
@@ -458,7 +458,7 @@
             <a href="https://edfong.github.io/" target="_blank">Dr. Edwin Fong</a> and co-supervised by 
             <a href="https://saasweb.hku.hk/staff/smslee/" target="_blank">Prof. Stephen Lee</a>. 
             Before my doctoral studies, I completed my Bachelor's degree (2020–2024) at the same department, where I was advised by 
-            <a href="https://michaelzhang01.github.io/" target="_blank">Prof. Michael Minyi Zhang</a>.
+            <a href="https://michaelzhang01.github.io/" target="_blank">Dr. Michael Minyi Zhang</a>.
         </p>
         <p>
             My research bridges nonparametric Bayesian methods, model misspecification, and computational efficiency. In particular, I develop novel 
@@ -491,7 +491,7 @@
         <!-- 工作论文 -->
         <div class="pub-item">
             <div class="pub-title">
-                Partition Posterior Bootstrap: A Smooth Nonparametric Learning Method
+                Smoothing the posterior bootstrap with greedy empirical Bayesian trees
             </div>
             <div class="author-list">
                 <i class="fas fa-users"></i> Taole Sha, Shibo Yu, Edwin Fong<sup>∗</sup>    <span class="corr-star">∗ corresponding author</span>
@@ -568,7 +568,7 @@
         </div>
     </section>
 
-    <!-- ★ 新增 Singing Section (personal life) ★ -->
+    <!-- Singing Section -->
     <section id="singing">
         <h2><i class="fas fa-music"></i> Singing</h2>
         <p style="margin-bottom: 0.5rem;">Welcome listening：</p>
