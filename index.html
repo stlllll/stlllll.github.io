@@ -2,109 +2,508 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sha Taole | Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sha Taole | 沙陶乐 · 香港大学统计学博士生</title>
+    <!-- 优雅字体与重置样式 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Basic styling - customize colors, fonts, etc. */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f9f9f9;
+            box-sizing: border-box;
         }
-        header {
-            background: #1565C0; /* Change header color */
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background-color: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
+
+        /* 容器与布局 */
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #333;
-        }
-        nav a {
+
+        /* header 区域 —— 典雅现代 */
+        header {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1b4a6e 100%);
             color: white;
-            padding: 14px 20px;
-            text-decoration: none;
+            padding: 3rem 0 3.5rem;
             text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        nav a:hover {
-            background: #4CAF50;
-        }
-        section {
-            padding: 20px 0;
-            border-bottom: 1px solid #e1e1e1;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
-        }
-        img.profile {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
+
+        .profile {
+            width: 160px;
+            height: 160px;
             object-fit: cover;
-            border: 5px solid white;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.25);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+            background-color: #eef2ff;
+        }
+        .profile:hover {
+            transform: scale(1.02);
+        }
+
+        header h1 {
+            font-size: 2.7rem;
+            font-weight: 600;
+            margin-top: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        header p a {
+            color: #ffd966;
+            text-decoration: none;
+            border-bottom: 1px dotted #ffd966;
+        }
+        header p a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* 导航栏 - 粘性玻璃效果 */
+        nav {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.6rem 1rem;
+        }
+        .nav-links a {
+            color: #1e3a5f;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            background-color: #eef2ff;
+            color: #0f2b3d;
+        }
+
+        /* sections 卡片风格 */
+        section {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px -12px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s;
+            scroll-margin-top: 80px;
+            border: 1px solid #eef2ff;
+        }
+        section:hover {
+            box-shadow: 0 20px 30px -16px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #2c6e9e;
+            padding-left: 1rem;
+            color: #0c4a6e;
+        }
+        h2 i, h2 .fa, h2 .fas {
+            margin-right: 0.6rem;
+            color: #2c6e9e;
+            font-size: 1.6rem;
+        }
+
+        /* 出版物条目样式 */
+        .pub-item {
+            background: #fafcff;
+            padding: 1.2rem 1.2rem;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #2c6e9e;
+            transition: 0.1s linear;
+        }
+        .pub-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f2b3d;
+            margin-bottom: 0.5rem;
+        }
+        .pub-meta {
+            font-size: 0.9rem;
+            color: #2c6e9e;
+            margin: 0.5rem 0;
+        }
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.7rem;
+        }
+        .pub-links a {
+            background: #eef2ff;
+            padding: 0.25rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1e3a5f;
+            transition: all 0.2s;
+        }
+        .pub-links a:hover {
+            background: #2c6e9e;
+            color: white;
+        }
+        .poster-note {
+            background: #f1f5f9;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2d3e50;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        /* 教学/经历 列表样式 */
+        .timeline-item {
+            margin-bottom: 1.6rem;
+            border-bottom: 1px solid #eef2ff;
+            padding-bottom: 1rem;
+        }
+        .timeline-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            color: #5b6e8c;
+            background: #f1f5f9;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+        }
+        .timeline-sub {
+            font-weight: 500;
+            color: #2c6e9e;
+            margin: 0.2rem 0 0.3rem;
+        }
+        .award-badge {
+            background: #e6f7e6;
+            color: #2b6e3c;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            margin-left: 0.8rem;
+            display: inline-block;
+        }
+        .service-item, .work-desc {
+            margin: 0.8rem 0 0.2rem 0;
+            padding-left: 0.2rem;
+        }
+        .work-desc ul {
+            margin-left: 1.3rem;
+            margin-top: 0.4rem;
+        }
+        .work-desc li {
+            margin: 0.3rem 0;
+        }
+
+        /* contact 小图标行 */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .contact-card {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1rem;
+            transition: 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .contact-card i {
+            font-size: 1.4rem;
+            color: #2c6e9e;
+        }
+        .contact-card a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .contact-card:hover {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+            background: #f9fbfd;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .contact-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .contact-card {
+                width: fit-content;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* 简单点缀 */
+        .btn-soft {
+            transition: all 0.2s;
+        }
+        .scholar-link {
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            background: #eef2ff;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e3a5f;
+        }
+        .scholar-link:hover {
+            background: #2c6e9e;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Sha Taole -->
-    <header>
-        <img src="photo.jpg" alt="Sha Taole" class="profile">
-        <h1>Sha Taole</h1>
-        <p>PhD Student in Statistics at HKU <a href="https://saasweb.hku.hk/student/2024phd.php#shataole">SAAS</a></p> <!-- Modify your subtitle -->
-    </header>
 
-    <!-- Navigation Menu -->
-    <nav>
-        <a href="#about">About</a>
-        <a href="#Publications">Publications</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Main Content Sections -->
+<header>
     <div class="container">
-        <!-- About Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I'm Sha Taole, a PhD student (2024-2028) studying Bayesian nonparametrics (especially Bayesian Bootstrap), primarily supervised by <a href="https://edfong.github.io/">Dr. Edwin Fong</a>, 
-                and co-supervised by <a href="https://saasweb.hku.hk/staff/smslee/">Prof. Stephen Lee</a>. Before that, I completed my Bachelor's degree at the same <a href="https://saasweb.hku.hk/student/2024phd.php#shataole">department</a> (2020-2024). 
-               Welcome to my personal website!</p>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="Publications">
-            <h2>Published Papers <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN">Google Scholar</a></h2>
-            <ul>
-                <li>Sha, T. and Zhang, M. M. (2025). Online student-<i>t</i> processes with an overall-local scale structure for modelling non-stationary data. In <i>The 28th International Conference on Artificial Intelligence and Statistics.</i> 
-                      <be> <a href="https://raw.githubusercontent.com/mlresearch/v258/main/assets/sha25a/sha25a.pdf">paper</a>, <a href="https://github.com/stlllll/TP-MOE/tree/main">code</a> </li>
-            </ul>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:u3577089@connect.hku.hk">u3577089@connect.hku.hk</a></p>
-            <p>GitHub: <a href="https://github.com/stlllll">github.com/stlllll</a></p>
-        </section>
+        <img src="photo.jpg" alt="Sha Taole profile photo" class="profile" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=2c6e9e&color=fff&name=ST&size=160';">
+        <h1>Sha Taole · 沙陶乐</h1>
+        <p>PhD Candidate in Statistics | HKU <a href="https://saasweb.hku.hk/student/2024phd.php#shataole" target="_blank">SAAS</a> · Bayesian Nonparametrics</p>
     </div>
+</header>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Sha Taole</p>
-    </footer>
+<nav>
+    <div class="nav-links">
+        <a href="#about"><i class="fas fa-user"></i> About</a>
+        <a href="#publications"><i class="fas fa-file-alt"></i> Publications</a>
+        <a href="#teaching"><i class="fas fa-chalkboard-user"></i> Teaching</a>
+        <a href="#service"><i class="fas fa-globe"></i> Service</a>
+        <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+    <!-- About Section -->
+    <section id="about">
+        <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
+        <p style="font-size:1.05rem; margin-bottom:0.8rem;">
+            I am a Ph.D. student (2024–2028) in Statistics at the <strong>University of Hong Kong</strong>, working on 
+            <strong>Bayesian nonparametrics</strong> — with a special focus on the <strong>Bayesian Bootstrap</strong> and 
+            dependent nonparametric processes. I am fortunate to be supervised by 
+            <a href="https://edfong.github.io/" target="_blank">Dr. Edwin Fong</a> and co-supervised by 
+            <a href="https://saasweb.hku.hk/staff/smslee/" target="_blank">Prof. Stephen Lee</a>. 
+            Before my doctoral studies, I completed my Bachelor's degree (2020–2024) at the same department.
+        </p>
+        <p>
+            My research bridges theory and computation, with current interests in online learning, scalable Bayesian inference, 
+            and time-adaptive models. I am also passionate about statistical education and reproducible research.
+        </p>
+    </section>
+
+    <!-- Publications Section (with Poster info from CV) -->
+    <section id="publications">
+        <h2><i class="fas fa-microphone-alt"></i> Publications 
+            <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN" target="_blank" class="scholar-link"><i class="fab fa-google"></i> Google Scholar</a>
+        </h2>
+        <div class="pub-item">
+            <div class="pub-title">
+                Online student-<em>t</em> processes with an overall-local scale structure for modelling non-stationary data
+            </div>
+            <div class="pub-meta">
+                <strong>Sha, T.</strong> and Zhang, M. M. (2025). In <em>The 28th International Conference on Artificial Intelligence and Statistics (AISTATS 2025)</em>.
+            </div>
+            <div class="pub-links">
+                <a href="https://raw.githubusercontent.com/mlresearch/v258/main/assets/sha25a/sha25a.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                <a href="https://github.com/stlllll/TP-MOE" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+            <div class="poster-note">
+                <i class="fas fa-chalkboard"></i> Presented as Poster at AISTATS 2025 & AABI 2025
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section (TA experiences from CV) -->
+    <section id="teaching">
+        <h2><i class="fas fa-person-chalkboard"></i> Teaching Assistant</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-title">STAT6011: Computational statistics and Bayesian learning</span>
+                <span class="timeline-date">Fall 2024</span>
+            </div>
+            <div class="timeline-sub">The University of Hong Kong 
+                <span class="award-badge"><i class="fas fa-trophy"></i> Excellent Teaching Assistant Award</span>
+            </div>
+            <div style="font-size:0.9rem; margin-top:0.3rem;">Led tutorials, supervised lab sessions, and developed assignment materials for graduate-level Bayesian learning.</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-title">STAT4904: Statistical learning for risk modelling</span>
+                <span class="timeline-date">Spring 2025 & Spring 2026</span>
+            </div>
+            <div class="timeline-sub">The University of Hong Kong</div>
+            <div style="font-size:0.9rem; margin-top:0.3rem;">Teaching assistant for advanced risk modelling course; support students with statistical computing and real‑world case studies.</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-title">STAT4610: Bayesian Learning</span>
+                <span class="timeline-date">Fall 2025</span>
+            </div>
+            <div class="timeline-sub">The University of Hong Kong</div>
+            <div style="font-size:0.9rem; margin-top:0.3rem;">Assisted in course design, conducted recitation sessions on MCMC and hierarchical models, and graded projects.</div>
+        </div>
+    </section>
+
+    <!-- Academic Service Section -->
+    <section id="service">
+        <h2><i class="fas fa-hand-sparkles"></i> Academic Service</h2>
+        <div class="service-item" style="background:#fefce8; padding:1rem 1.2rem; border-radius: 20px; display:inline-block; width:auto;">
+            <i class="fas fa-star-of-life" style="color:#c9771e;"></i> <strong>Reviewer</strong> for <em>Bayesian Analysis</em> (2025)
+        </div>
+        <p style="margin-top: 1rem; font-size:0.9rem; color:#475569;">Ad-hoc reviewing for international journals, contributing to the Bayesian community.</p>
+    </section>
+
+    <!-- Work Experience (from CV) -->
+    <section id="experience">
+        <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-title">Student Research Assistant</span>
+                <span class="timeline-date">03/2022 – 12/2022</span>
+            </div>
+            <div class="timeline-sub">Sau Po Centre on Ageing, The University of Hong Kong</div>
+            <div class="work-desc">
+                <ul>
+                    <li>Data cleaning and preprocessing with R for large-scale ageing cohort studies</li>
+                    <li>Statistical data analysis and visualization to support research on elderly health policies</li>
+                    <li>Report writing and summarising empirical findings for interdisciplinary publications</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 可拓展其他经历，但CV只包含这段 -->
+        <p style="margin-top: 0.5rem; font-size:0.85rem;"><i class="fas fa-chart-line"></i> Developed reproducible pipelines and contributed to evidence‑based ageing research.</p>
+    </section>
+
+    <!-- Contact Section 增强风格 -->
+    <section id="contact">
+        <h2><i class="fas fa-paper-plane"></i> Connect with Me</h2>
+        <div class="contact-links">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:u3577089@connect.hku.hk">u3577089@connect.hku.hk</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/stlllll" target="_blank">github.com/stlllll</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-google"></i>
+                <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
+            </div>
+        </div>
+        <p style="margin-top: 1.8rem; font-size:0.85rem; border-top: 1px solid #eef2ff; padding-top: 1rem;">
+            📍 Hong Kong &nbsp;|&nbsp; Interested in collaborations, Bayesian methodology, and open-source statistical software.
+        </p>
+    </section>
+</div>
+
+<footer>
+    <p>© 2025 Sha Taole — Last updated April 2026 | Built with <i class="fas fa-heart" style="color:#b91c1c;"></i> for reproducible research</p>
+</footer>
+
+<!-- 平滑锚点偏移校正 (防止固定导航栏遮挡) -->
+<script>
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const offset = 80; // 导航栏高度补偿
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
