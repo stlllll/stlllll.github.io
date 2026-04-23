@@ -30,13 +30,22 @@
             padding: 0 1.5rem;
         }
 
+        /* header 区域 — 添加背景图 */
         header {
-            background: linear-gradient(135deg, #0f2b3d 0%, #1b4a6e 100%);
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 43, 61, 0.75) 0%, rgba(27, 74, 110, 0.85) 100%), url('background.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
             color: white;
             padding: 3rem 0 3.5rem;
             text-align: center;
-            position: relative;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* 可选：为增加文字清晰度，加轻微阴影 */
+        header h1, header p {
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .profile {
@@ -44,7 +53,7 @@
             height: 160px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.25);
+            border: 5px solid rgba(255,255,255,0.4);
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
             transition: transform 0.2s ease;
             background-color: #eef2ff;
@@ -63,7 +72,7 @@
         header p {
             font-size: 1.2rem;
             margin-top: 0.5rem;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 400;
         }
 
@@ -271,6 +280,64 @@
             color: white;
         }
 
+        /* Singing 板块专用样式 */
+        .singing-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0 1rem;
+        }
+        .song-card {
+            background: #fefce8;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            transition: all 0.2s;
+            border: 1px solid #fde68a;
+        }
+        .song-card a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #b45309;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .song-card a i {
+            font-size: 0.9rem;
+            color: #d97706;
+        }
+        .song-card:hover {
+            background: #fffbeb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
+        }
+        .singing-friend {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eef2ff;
+        }
+        .friend-link {
+            background: #eef2ff;
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .friend-link a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        .friend-link i {
+            margin-right: 0.4rem;
+        }
+        .friend-link:hover {
+            background: #2c6e9e;
+        }
+        .friend-link:hover a {
+            color: white;
+        }
+
         .contact-links {
             display: flex;
             flex-wrap: wrap;
@@ -337,6 +404,9 @@
             header h1 {
                 font-size: 2rem;
             }
+            .singing-links {
+                gap: 0.7rem;
+            }
         }
 
         .scholar-link {
@@ -373,27 +443,28 @@
         <a href="#teaching"><i class="fas fa-chalkboard-user"></i> Teaching</a>
         <a href="#service"><i class="fas fa-globe"></i> Service</a>
         <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="#singing"><i class="fas fa-microphone-alt"></i> Singing</a>
         <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
 </nav>
 
 <div class="container">
-    <!-- About Section - 已添加本科导师信息 -->
-<section id="about">
-    <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
-    <p style="font-size:1.05rem; margin-bottom:0.8rem;">
-        I am a Ph.D. student (2024–2028) in Statistics at the <strong>Department of Statistics and Actuarial Science, The University of Hong Kong</strong>, working on 
-        <strong>Generalized Bayes Inference</strong> — with a special focus on scalable and robust nonparametric learning. I am fortunate to be supervised by 
-        <a href="https://edfong.github.io/" target="_blank">Dr. Edwin Fong</a> and co-supervised by 
-        <a href="https://saasweb.hku.hk/staff/smslee/" target="_blank">Prof. Stephen Lee</a>. 
-        Before my doctoral studies, I completed my Bachelor's degree (2020–2024) at the same department, where I was advised by 
-        <a href="https://michaelzhang01.github.io/" target="_blank">Prof. Michael Minyi Zhang</a>.
-    </p>
-    <p>
-        My research bridges nonparametric Bayesian methods, model misspecification, and computational efficiency. In particular, I develop novel 
-        posterior bootstrap procedures that retain smoothness and scalability for high-dimensional inference.
-    </p>
-</section>
+    <!-- About Section (已包含本科导师信息) -->
+    <section id="about">
+        <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
+        <p style="font-size:1.05rem; margin-bottom:0.8rem;">
+            I am a Ph.D. student (2024–2028) in Statistics at the <strong>Department of Statistics and Actuarial Science, The University of Hong Kong</strong>, working on 
+            <strong>Generalized Bayes Inference</strong> — with a special focus on scalable and robust nonparametric learning. I am fortunate to be supervised by 
+            <a href="https://edfong.github.io/" target="_blank">Dr. Edwin Fong</a> and co-supervised by 
+            <a href="https://saasweb.hku.hk/staff/smslee/" target="_blank">Prof. Stephen Lee</a>. 
+            Before my doctoral studies, I completed my Bachelor's degree (2020–2024) at the same department, where I was advised by 
+            <a href="https://michaelzhang01.github.io/" target="_blank">Prof. Michael Minyi Zhang</a>.
+        </p>
+        <p>
+            My research bridges nonparametric Bayesian methods, model misspecification, and computational efficiency. In particular, I develop novel 
+            posterior bootstrap procedures that retain smoothness and scalability for high-dimensional inference.
+        </p>
+    </section>
 
     <!-- Publications Section -->
     <section id="publications">
@@ -417,7 +488,7 @@
             </div>
         </div>
 
-        <!-- 新工作论文 - 作者去掉上标数字1 -->
+        <!-- 工作论文 -->
         <div class="pub-item">
             <div class="pub-title">
                 Partition Posterior Bootstrap: A Smooth Nonparametric Learning Method
@@ -470,7 +541,7 @@
         </div>
     </section>
 
-    <!-- Academic Service Section -->
+    <!-- Academic Service -->
     <section id="service">
         <h2><i class="fas fa-hand-sparkles"></i> Academic Service</h2>
         <div class="service-item" style="background:#fefce8; padding:1rem 1.2rem; border-radius: 20px; display:inline-block; width:auto;">
@@ -478,7 +549,7 @@
         </div>
     </section>
 
-    <!-- Work Experience - 精简描述，去掉“for...” -->
+    <!-- Work Experience -->
     <section id="experience">
         <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
         <div class="timeline-item">
@@ -494,6 +565,24 @@
                     <li>Report writing and summarising empirical findings</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <!-- ★ 新增 Singing Section (personal life) ★ -->
+    <section id="singing">
+        <h2><i class="fas fa-music"></i> Singing</h2>
+        <p style="margin-bottom: 0.5rem;">Welcome listening：</p>
+        <div class="singing-links">
+            <div class="song-card"><a href="http://xhslink.com/o/3u5SGF91zR9" target="_blank"><i class="fab fa-tiktok"></i> cover《空白格》</a></div>
+            <div class="song-card"><a href="http://xhslink.com/o/3rPue4LmM98" target="_blank"><i class="fab fa-tiktok"></i> cover《夜夜夜夜》</a></div>
+            <div class="song-card"><a href="http://xhslink.com/o/2AShP5TJ2dx" target="_blank"><i class="fab fa-tiktok"></i> cover《好久不见》</a></div>
+            <div class="song-card"><a href="http://xhslink.com/o/1CO3IJCF4Iu" target="_blank"><i class="fab fa-tiktok"></i> cover《十年》</a></div>
+        </div>
+        <div class="singing-friend">
+            <span class="friend-link">
+                <i class="fas fa-user-friends"></i> <a href="https://yiuyin-yung.github.io/" target="_blank">Yung Yiu Yin (my singing & research friend)</a>
+            </span>
+            <p style="font-size: 0.85rem; margin-top: 0.8rem; color: #4b5563;">🎤</p>
         </div>
     </section>
 
