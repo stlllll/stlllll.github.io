@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Sha Taole | 沙陶乐 · 香港大学统计学博士生</title>
+    <title>Sha Taole | 沙陶乐 · 港大统计精算学系博士生</title>
     <!-- 优雅字体与重置样式 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
             padding: 0 1.5rem;
         }
 
-        /* header 区域 —— 典雅现代 */
+        /* header 区域 */
         header {
             background: linear-gradient(135deg, #0f2b3d 0%, #1b4a6e 100%);
             color: white;
@@ -79,7 +79,7 @@
             border-bottom-color: white;
         }
 
-        /* 导航栏 - 粘性玻璃效果 */
+        /* 导航栏 */
         nav {
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(8px);
@@ -192,6 +192,15 @@
             display: inline-block;
             margin-top: 0.5rem;
         }
+        .abstract-text {
+            font-size: 0.9rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 18px;
+            margin-top: 0.8rem;
+            color: #1e2a3a;
+            border-left: 3px solid #6c8eae;
+        }
 
         /* 教学/经历 列表样式 */
         .timeline-item {
@@ -243,6 +252,20 @@
         }
         .work-desc li {
             margin: 0.3rem 0;
+        }
+        .course-link {
+            font-size: 0.75rem;
+            margin-left: 0.6rem;
+            background: #eef2ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2c6e9e;
+            font-weight: 500;
+        }
+        .course-link:hover {
+            background: #2c6e9e;
+            color: white;
         }
 
         /* contact 小图标行 */
@@ -314,10 +337,6 @@
             }
         }
 
-        /* 简单点缀 */
-        .btn-soft {
-            transition: all 0.2s;
-        }
         .scholar-link {
             font-size: 0.9rem;
             margin-left: 1rem;
@@ -340,7 +359,8 @@
     <div class="container">
         <img src="photo.jpg" alt="Sha Taole profile photo" class="profile" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=2c6e9e&color=fff&name=ST&size=160';">
         <h1>Sha Taole · 沙陶乐</h1>
-        <p>PhD Candidate in Statistics | HKU <a href="https://saasweb.hku.hk/student/2024phd.php#shataole" target="_blank">SAAS</a> · Bayesian Nonparametrics</p>
+        <p>PhD Candidate in Statistics | <strong>Department of Statistics and Actuarial Science</strong>, HKU<br>
+        <a href="https://saasweb.hku.hk/student/2024phd.php#shataole" target="_blank">SAAS</a> · Generalized Bayes Inference</p>
     </div>
 </header>
 
@@ -356,28 +376,29 @@
 </nav>
 
 <div class="container">
-    <!-- About Section -->
+    <!-- About Section - 更新研究方向与系所 -->
     <section id="about">
         <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
         <p style="font-size:1.05rem; margin-bottom:0.8rem;">
-            I am a Ph.D. student (2024–2028) in Statistics at the <strong>University of Hong Kong</strong>, working on 
-            <strong>Bayesian nonparametrics</strong> — with a special focus on the <strong>Bayesian Bootstrap</strong> and 
-            dependent nonparametric processes. I am fortunate to be supervised by 
+            I am a Ph.D. student (2024–2028) in Statistics at the <strong>Department of Statistics and Actuarial Science, The University of Hong Kong</strong>, working on 
+            <strong>Generalized Bayes Inference</strong> — with a special focus on scalable and robust nonparametric learning. I am fortunate to be supervised by 
             <a href="https://edfong.github.io/" target="_blank">Dr. Edwin Fong</a> and co-supervised by 
             <a href="https://saasweb.hku.hk/staff/smslee/" target="_blank">Prof. Stephen Lee</a>. 
             Before my doctoral studies, I completed my Bachelor's degree (2020–2024) at the same department.
         </p>
         <p>
-            My research bridges theory and computation, with current interests in online learning, scalable Bayesian inference, 
-            and time-adaptive models. I am also passionate about statistical education and reproducible research.
+            My research bridges nonparametric Bayesian methods, model misspecification, and computational efficiency. In particular, I develop novel 
+            posterior bootstrap procedures that retain smoothness and scalability for high-dimensional inference. I am also passionate about statistical 
+            education and reproducible research.
         </p>
     </section>
 
-    <!-- Publications Section (with Poster info from CV) -->
+    <!-- Publications Section: 已发表论文 + 新工作论文 (含摘要) -->
     <section id="publications">
-        <h2><i class="fas fa-microphone-alt"></i> Publications 
+        <h2><i class="fas fa-microphone-alt"></i> Publications & Working Papers
             <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN" target="_blank" class="scholar-link"><i class="fab fa-google"></i> Google Scholar</a>
         </h2>
+        <!-- 已发表论文 -->
         <div class="pub-item">
             <div class="pub-title">
                 Online student-<em>t</em> processes with an overall-local scale structure for modelling non-stationary data
@@ -393,52 +414,68 @@
                 <i class="fas fa-chalkboard"></i> Presented as Poster at AISTATS 2025 & AABI 2025
             </div>
         </div>
+
+        <!-- 新工作论文 (Partition Posterior Bootstrap) -->
+        <div class="pub-item">
+            <div class="pub-title">
+                Partition Posterior Bootstrap: A Smooth Nonparametric Learning Method
+            </div>
+            <div class="pub-meta">
+                <strong>Sha, T.</strong>, Fong, E., & Lee, S. <span style="background:#eef2ff; padding:0.1rem 0.4rem; border-radius:30px; font-size:0.7rem;">In preparation</span>
+            </div>
+            <div class="abstract-text">
+                <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
+                Conventional Bayesian inference faces challenges regarding model misspecification and computational efficiency, especially in modern settings where datasets are increasingly large and high-dimensional. Within the nonparametric learning framework, the posterior bootstrap has become a viable alternative to posterior sampling due to its robustness and scalability. However, most existing methods are built on the Dirichlet process and its variants, which are known to produce posterior samples of the underlying distribution which are discrete. This discrete nature prohibits the inference of parameters which require the underlying distribution to have a density, and furthermore impede the existence of the posterior predictive density. In this work, we propose the <strong>partition posterior bootstrap (PPB)</strong>: a smooth nonparametric learning method which relies on a data-adaptive partition of the sample space parametrized by a binary tree. Conditioned on this partition, posterior sampling involves a scalable posterior bootstrap which does not require Markov chain Monte Carlo. A key advantage of our method is that the tree partition can be learnt in a greedy empirical Bayesian manner from the corresponding marginal likelihood, which is both highly computationally efficient and theoretically tractable. Our proposed method can thus be regarded as a default and efficient nonparametric learning method for posterior inference and prediction when smoothness of the underlying distribution is required, especially for high-dimensional datasets. We demonstrate its excellent performance in both simulated and real-world datasets.
+            </div>
+        </div>
     </section>
 
-    <!-- Teaching Section (TA experiences from CV) -->
+    <!-- Teaching Section - 只保留课程、学期、学校，删除职责描述，添加链接 -->
     <section id="teaching">
         <h2><i class="fas fa-person-chalkboard"></i> Teaching Assistant</h2>
         
         <div class="timeline-item">
             <div class="timeline-header">
-                <span class="timeline-title">STAT6011: Computational statistics and Bayesian learning</span>
+                <span class="timeline-title">STAT6010: Computational statistics and Bayesian learning 
+                    <a href="https://gradsch.hku.hk/sites/default/files/content/4_current_students/coursework/course_information/faculty_school_departmental_courses/Statistics%20and%20Actuarial%20Science.pdf" target="_blank" class="course-link"><i class="fas fa-external-link-alt"></i> syllabus</a>
+                </span>
                 <span class="timeline-date">Fall 2024</span>
             </div>
             <div class="timeline-sub">The University of Hong Kong 
                 <span class="award-badge"><i class="fas fa-trophy"></i> Excellent Teaching Assistant Award</span>
             </div>
-            <div style="font-size:0.9rem; margin-top:0.3rem;">Led tutorials, supervised lab sessions, and developed assignment materials for graduate-level Bayesian learning.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-header">
-                <span class="timeline-title">STAT4904: Statistical learning for risk modelling</span>
+                <span class="timeline-title">STAT4904: Statistical learning for risk modelling 
+                    <a href="https://webapp.science.hku.hk/sr4/servlet/enquiry?Type=Course&course_code=STAT4904" target="_blank" class="course-link"><i class="fas fa-external-link-alt"></i> syllabus</a>
+                </span>
                 <span class="timeline-date">Spring 2025 & Spring 2026</span>
             </div>
             <div class="timeline-sub">The University of Hong Kong</div>
-            <div style="font-size:0.9rem; margin-top:0.3rem;">Teaching assistant for advanced risk modelling course; support students with statistical computing and real‑world case studies.</div>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-header">
-                <span class="timeline-title">STAT4610: Bayesian Learning</span>
+                <span class="timeline-title">STAT4610: Bayesian Learning 
+                    <a href="https://webapp.science.hku.hk/sr4/servlet/enquiry?Type=Course&course_code=STAT4610" target="_blank" class="course-link"><i class="fas fa-external-link-alt"></i> syllabus</a>
+                </span>
                 <span class="timeline-date">Fall 2025</span>
             </div>
             <div class="timeline-sub">The University of Hong Kong</div>
-            <div style="font-size:0.9rem; margin-top:0.3rem;">Assisted in course design, conducted recitation sessions on MCMC and hierarchical models, and graded projects.</div>
         </div>
     </section>
 
-    <!-- Academic Service Section -->
+    <!-- Academic Service Section - 精简，只保留必要信息 -->
     <section id="service">
         <h2><i class="fas fa-hand-sparkles"></i> Academic Service</h2>
         <div class="service-item" style="background:#fefce8; padding:1rem 1.2rem; border-radius: 20px; display:inline-block; width:auto;">
             <i class="fas fa-star-of-life" style="color:#c9771e;"></i> <strong>Reviewer</strong> for <em>Bayesian Analysis</em> (2025)
         </div>
-        <p style="margin-top: 1rem; font-size:0.9rem; color:#475569;">Ad-hoc reviewing for international journals, contributing to the Bayesian community.</p>
     </section>
 
-    <!-- Work Experience (from CV) -->
+    <!-- Work Experience (保留原始职责，删除多余描述) -->
     <section id="experience">
         <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
         <div class="timeline-item">
@@ -455,11 +492,9 @@
                 </ul>
             </div>
         </div>
-        <!-- 可拓展其他经历，但CV只包含这段 -->
-        <p style="margin-top: 0.5rem; font-size:0.85rem;"><i class="fas fa-chart-line"></i> Developed reproducible pipelines and contributed to evidence‑based ageing research.</p>
     </section>
 
-    <!-- Contact Section 增强风格 -->
+    <!-- Contact Section - 删除了多余的地理位置与兴趣描述 -->
     <section id="contact">
         <h2><i class="fas fa-paper-plane"></i> Connect with Me</h2>
         <div class="contact-links">
@@ -476,17 +511,14 @@
                 <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
             </div>
         </div>
-        <p style="margin-top: 1.8rem; font-size:0.85rem; border-top: 1px solid #eef2ff; padding-top: 1rem;">
-            📍 Hong Kong &nbsp;|&nbsp; Interested in collaborations, Bayesian methodology, and open-source statistical software.
-        </p>
     </section>
 </div>
 
 <footer>
-    <p>© 2025 Sha Taole — Last updated April 2026 | Built with <i class="fas fa-heart" style="color:#b91c1c;"></i> for reproducible research</p>
+    <p>© 2025 Sha Taole — Last updated April 2026</p>
 </footer>
 
-<!-- 平滑锚点偏移校正 (防止固定导航栏遮挡) -->
+<!-- 平滑锚点偏移校正 -->
 <script>
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -494,7 +526,7 @@
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                const offset = 80; // 导航栏高度补偿
+                const offset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - offset;
                 window.scrollTo({
