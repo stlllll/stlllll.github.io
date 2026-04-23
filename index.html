@@ -201,6 +201,15 @@
             color: #1e2a3a;
             border-left: 3px solid #6c8eae;
         }
+        .author-list {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+            margin-bottom: 0.4rem;
+        }
+        .corr-star {
+            font-weight: 500;
+            color: #c9771e;
+        }
 
         /* 教学/经历 列表样式 */
         .timeline-item {
@@ -376,7 +385,7 @@
 </nav>
 
 <div class="container">
-    <!-- About Section - 更新研究方向与系所 -->
+    <!-- About Section - 删除了关于统计教育的那句话 -->
     <section id="about">
         <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
         <p style="font-size:1.05rem; margin-bottom:0.8rem;">
@@ -388,12 +397,11 @@
         </p>
         <p>
             My research bridges nonparametric Bayesian methods, model misspecification, and computational efficiency. In particular, I develop novel 
-            posterior bootstrap procedures that retain smoothness and scalability for high-dimensional inference. I am also passionate about statistical 
-            education and reproducible research.
+            posterior bootstrap procedures that retain smoothness and scalability for high-dimensional inference.
         </p>
     </section>
 
-    <!-- Publications Section: 已发表论文 + 新工作论文 (含摘要) -->
+    <!-- Publications Section: 已发表论文 + 新工作论文 (含摘要及正确作者) -->
     <section id="publications">
         <h2><i class="fas fa-microphone-alt"></i> Publications & Working Papers
             <a href="https://scholar.google.com/citations?user=_ZqXKMUAAAAJ&hl=zh-CN" target="_blank" class="scholar-link"><i class="fab fa-google"></i> Google Scholar</a>
@@ -415,13 +423,14 @@
             </div>
         </div>
 
-        <!-- 新工作论文 (Partition Posterior Bootstrap) -->
+        <!-- 新工作论文 (Partition Posterior Bootstrap) 作者更新为 Taole Sha, Shibo Yu, Edwin Fong -->
         <div class="pub-item">
             <div class="pub-title">
                 Partition Posterior Bootstrap: A Smooth Nonparametric Learning Method
             </div>
-            <div class="pub-meta">
-                <strong>Sha, T.</strong>, Fong, E., & Lee, S. <span style="background:#eef2ff; padding:0.1rem 0.4rem; border-radius:30px; font-size:0.7rem;">In preparation</span>
+            <div class="author-list">
+                <i class="fas fa-users"></i> <strong>Taole Sha</strong><sup>1</sup>, Shibo Yu<sup>1</sup>, Edwin Fong<sup>1,∗</sup>    <span class="corr-star">∗ corresponding author</span>
+                <span style="background:#eef2ff; padding:0.1rem 0.5rem; border-radius:30px; font-size:0.7rem; margin-left:0.6rem;">In preparation</span>
             </div>
             <div class="abstract-text">
                 <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
@@ -430,7 +439,7 @@
         </div>
     </section>
 
-    <!-- Teaching Section - 只保留课程、学期、学校，删除职责描述，添加链接 -->
+    <!-- Teaching Section - 课程代码修正为 STAT6011，保留链接 -->
     <section id="teaching">
         <h2><i class="fas fa-person-chalkboard"></i> Teaching Assistant</h2>
         
@@ -467,7 +476,7 @@
         </div>
     </section>
 
-    <!-- Academic Service Section - 精简，只保留必要信息 -->
+    <!-- Academic Service Section - 干净简洁 -->
     <section id="service">
         <h2><i class="fas fa-hand-sparkles"></i> Academic Service</h2>
         <div class="service-item" style="background:#fefce8; padding:1rem 1.2rem; border-radius: 20px; display:inline-block; width:auto;">
@@ -475,7 +484,7 @@
         </div>
     </section>
 
-    <!-- Work Experience (保留原始职责，删除多余描述) -->
+    <!-- Work Experience (保留原职责，无多余描述) -->
     <section id="experience">
         <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
         <div class="timeline-item">
@@ -494,7 +503,7 @@
         </div>
     </section>
 
-    <!-- Contact Section - 删除了多余的地理位置与兴趣描述 -->
+    <!-- Contact Section - 无多余描述 -->
     <section id="contact">
         <h2><i class="fas fa-paper-plane"></i> Connect with Me</h2>
         <div class="contact-links">
