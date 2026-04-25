@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -21,6 +21,11 @@
             background-color: #f5f7fb;
             color: #1e293b;
             line-height: 1.5;
+            /* padding-top 由JS动态设置，为固定导航栏预留空间，避免内容被遮挡 */
+        }
+
+        /* 全局平滑滚动 + 滚动偏移将由scroll-margin-top + CSS平滑滚动实现 */
+        html {
             scroll-behavior: smooth;
         }
 
@@ -30,37 +35,80 @@
             padding: 0 1.5rem;
         }
 
-        /* header 区域 — 增加高度，适配宽幅背景图 */
-header {
-    position: relative;
-    background: linear-gradient(135deg, rgba(15, 43, 61, 0.75) 0%, rgba(27, 74, 110, 0.85) 100%), url('background.png');
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-    color: white;
-    padding: 18rem 0 19rem;   /* 大幅增加上下内边距，让背景露出更多 */
-    min-height: 500px;       /* 确保最小高度，可根据喜好调整 */
-    display: flex;
-    align-items: center;     /* 内容垂直居中 */
-    text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-}
+        /* ========= 固定导航栏 (置顶+ 位于header上方) ========= */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(0px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.03);
+            z-index: 1000;
+            border-bottom: 1px solid #e2edf2;
+            transition: all 0.2s ease;
+        }
 
-/* 保持文字阴影 */
-header h1, header p {
-    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.7rem 1rem;
+        }
 
+        .nav-links a {
+            color: #1e3a5f;
+            text-decoration: none;
+            padding: 0.55rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background-color: #eef2ff;
+            color: #0f2b3d;
+        }
+
+        /* header 区域 — 大幅背景图，正常显示在导航栏下方 */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 43, 61, 0.78) 0%, rgba(27, 74, 110, 0.88) 100%), url('background.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 6rem 0 8rem;       /* 上下留白调整舒适，由于导航栏单独固定，不需要极大顶部留白 */
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 0;
+        }
+
+        /* 优雅头像 */
         .profile {
             width: 160px;
             height: 160px;
             object-fit: cover;
             border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.4);
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease;
             background-color: #eef2ff;
         }
+
         .profile:hover {
             transform: scale(1.02);
         }
@@ -70,6 +118,7 @@ header h1, header p {
             font-weight: 600;
             margin-top: 1.2rem;
             letter-spacing: -0.01em;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         header p {
@@ -77,6 +126,7 @@ header h1, header p {
             margin-top: 0.5rem;
             opacity: 0.95;
             font-weight: 400;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
         header p a {
@@ -84,55 +134,26 @@ header h1, header p {
             text-decoration: none;
             border-bottom: 1px dotted #ffd966;
         }
+
         header p a:hover {
             color: white;
             border-bottom-color: white;
         }
 
-        nav {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0.6rem 1rem;
-        }
-        .nav-links a {
-            color: #1e3a5f;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            border-radius: 40px;
-            transition: all 0.2s;
-        }
-        .nav-links a:hover {
-            background-color: #eef2ff;
-            color: #0f2b3d;
-        }
-
+        /* 卡片区域 */
         section {
             background: white;
             border-radius: 28px;
             padding: 2rem 2rem;
             margin: 2rem 0;
-            box-shadow: 0 8px 25px -12px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px -12px rgba(0, 0, 0, 0.08);
             transition: box-shadow 0.2s;
-            scroll-margin-top: 80px;
             border: 1px solid #eef2ff;
+            /* 滚动补偿: JS动态设定 scroll-margin-top，保证导航固定时锚点不被遮盖 */
         }
+
         section:hover {
-            box-shadow: 0 20px 30px -16px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 30px -16px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -144,12 +165,14 @@ header h1, header p {
             padding-left: 1rem;
             color: #0c4a6e;
         }
+
         h2 i, h2 .fa, h2 .fas {
             margin-right: 0.6rem;
             color: #2c6e9e;
             font-size: 1.6rem;
         }
 
+        /* 出版物卡片 */
         .pub-item {
             background: #fafcff;
             padding: 1.2rem 1.2rem;
@@ -158,23 +181,27 @@ header h1, header p {
             border-left: 4px solid #2c6e9e;
             transition: 0.1s linear;
         }
+
         .pub-title {
             font-weight: 700;
             font-size: 1.1rem;
             color: #0f2b3d;
             margin-bottom: 0.5rem;
         }
+
         .pub-meta {
             font-size: 0.9rem;
             color: #2c6e9e;
             margin: 0.5rem 0;
         }
+
         .pub-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 0.7rem;
         }
+
         .pub-links a {
             background: #eef2ff;
             padding: 0.25rem 0.9rem;
@@ -185,10 +212,12 @@ header h1, header p {
             color: #1e3a5f;
             transition: all 0.2s;
         }
+
         .pub-links a:hover {
             background: #2c6e9e;
             color: white;
         }
+
         .poster-note {
             background: #f1f5f9;
             padding: 0.3rem 0.8rem;
@@ -199,6 +228,7 @@ header h1, header p {
             display: inline-block;
             margin-top: 0.5rem;
         }
+
         .abstract-text {
             font-size: 0.9rem;
             background: #f8fafc;
@@ -208,11 +238,13 @@ header h1, header p {
             color: #1e2a3a;
             border-left: 3px solid #6c8eae;
         }
+
         .author-list {
             font-size: 0.85rem;
             color: #4a5b6e;
             margin-bottom: 0.4rem;
         }
+
         .corr-star {
             font-weight: 500;
             color: #c9771e;
@@ -223,6 +255,7 @@ header h1, header p {
             border-bottom: 1px solid #eef2ff;
             padding-bottom: 1rem;
         }
+
         .timeline-header {
             display: flex;
             flex-wrap: wrap;
@@ -230,11 +263,13 @@ header h1, header p {
             align-items: baseline;
             margin-bottom: 0.4rem;
         }
+
         .timeline-title {
             font-weight: 700;
             font-size: 1.1rem;
             color: #1e293b;
         }
+
         .timeline-date {
             font-size: 0.8rem;
             color: #5b6e8c;
@@ -242,11 +277,13 @@ header h1, header p {
             padding: 0.2rem 0.7rem;
             border-radius: 30px;
         }
+
         .timeline-sub {
             font-weight: 500;
             color: #2c6e9e;
             margin: 0.2rem 0 0.3rem;
         }
+
         .award-badge {
             background: #e6f7e6;
             color: #2b6e3c;
@@ -257,17 +294,21 @@ header h1, header p {
             margin-left: 0.8rem;
             display: inline-block;
         }
+
         .service-item, .work-desc {
             margin: 0.8rem 0 0.2rem 0;
             padding-left: 0.2rem;
         }
+
         .work-desc ul {
             margin-left: 1.3rem;
             margin-top: 0.4rem;
         }
+
         .work-desc li {
             margin: 0.3rem 0;
         }
+
         .course-link {
             font-size: 0.75rem;
             margin-left: 0.6rem;
@@ -278,18 +319,20 @@ header h1, header p {
             color: #2c6e9e;
             font-weight: 500;
         }
+
         .course-link:hover {
             background: #2c6e9e;
             color: white;
         }
 
-        /* Singing 板块专用样式 */
+        /* Singing板块 */
         .singing-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin: 1.2rem 0 1rem;
         }
+
         .song-card {
             background: #fefce8;
             border-radius: 60px;
@@ -297,6 +340,7 @@ header h1, header p {
             transition: all 0.2s;
             border: 1px solid #fde68a;
         }
+
         .song-card a {
             text-decoration: none;
             font-weight: 500;
@@ -305,20 +349,24 @@ header h1, header p {
             align-items: center;
             gap: 0.4rem;
         }
+
         .song-card a i {
             font-size: 0.9rem;
             color: #d97706;
         }
+
         .song-card:hover {
             background: #fffbeb;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.1);
         }
+
         .singing-friend {
             margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid #eef2ff;
         }
+
         .friend-link {
             background: #eef2ff;
             display: inline-block;
@@ -326,17 +374,21 @@ header h1, header p {
             border-radius: 40px;
             transition: 0.2s;
         }
+
         .friend-link a {
             text-decoration: none;
             font-weight: 600;
             color: #1e3a5f;
         }
+
         .friend-link i {
             margin-right: 0.4rem;
         }
+
         .friend-link:hover {
             background: #2c6e9e;
         }
+
         .friend-link:hover a {
             color: white;
         }
@@ -347,6 +399,7 @@ header h1, header p {
             gap: 2rem;
             margin-top: 1rem;
         }
+
         .contact-card {
             background: #f8fafc;
             padding: 1rem 1.5rem;
@@ -358,18 +411,21 @@ header h1, header p {
             transition: 0.2s;
             border: 1px solid #e2e8f0;
         }
+
         .contact-card i {
             font-size: 1.4rem;
             color: #2c6e9e;
         }
+
         .contact-card a {
             text-decoration: none;
             font-weight: 500;
             color: #1e293b;
         }
+
         .contact-card:hover {
             background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border-color: #cbd5e1;
         }
 
@@ -383,35 +439,6 @@ header h1, header p {
             background: #f9fbfd;
         }
 
-        @media (max-width: 720px) {
-            .container {
-                padding: 0 1rem;
-            }
-            section {
-                padding: 1.5rem;
-            }
-            h2 {
-                font-size: 1.6rem;
-            }
-            .timeline-header {
-                flex-direction: column;
-                gap: 0.3rem;
-            }
-            .contact-links {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            .contact-card {
-                width: fit-content;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            .singing-links {
-                gap: 0.7rem;
-            }
-        }
-
         .scholar-link {
             font-size: 0.9rem;
             margin-left: 1rem;
@@ -421,25 +448,83 @@ header h1, header p {
             text-decoration: none;
             font-weight: 500;
             color: #1e3a5f;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
+
         .scholar-link:hover {
             background: #2c6e9e;
             color: white;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .contact-card {
+                width: fit-content;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .singing-links {
+                gap: 0.7rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+            
+            .nav-links {
+                gap: 0.1rem;
+                padding: 0.6rem 0.5rem;
+            }
+            
+            header {
+                padding: 5rem 0 6rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav-links a {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.75rem;
+            }
+            .nav-links a i {
+                margin-right: 3px;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <img src="photo.jpg" alt="Sha Taole profile photo" class="profile" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=2c6e9e&color=fff&name=ST&size=160';">
-        <h1>Sha Taole · 沙陶乐</h1>
-        <p>PhD Candidate in Statistics | <strong>Department of Statistics and Actuarial Science</strong>, HKU<br>
-        <a href="https://saasweb.hku.hk/student/2024phd.php#shataole" target="_blank">SAAS</a> · Generalized Bayes Inference</p>
-    </div>
-</header>
-
-<nav>
+<!-- 固定导航栏：位于页面最顶部，始终可见，置于照片上方 -->
+<nav class="fixed-nav" id="mainNav">
     <div class="nav-links">
         <a href="#about"><i class="fas fa-user"></i> About</a>
         <a href="#publications"><i class="fas fa-file-alt"></i> Publications</a>
@@ -450,6 +535,16 @@ header h1, header p {
         <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
 </nav>
+
+<!-- header区域：照片、姓名等，正常位于导航栏下方，由于body预留padding-top，确保不会被导航遮挡 且目录始终在照片上方固定 -->
+<header>
+    <div class="container">
+        <img src="photo.jpg" alt="Sha Taole profile photo" class="profile" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=2c6e9e&color=fff&name=ST&size=160';">
+        <h1>Sha Taole · 沙陶乐</h1>
+        <p>PhD Candidate in Statistics | <strong>Department of Statistics and Actuarial Science</strong>, HKU<br>
+        <a href="https://saasweb.hku.hk/student/2024phd.php#shataole" target="_blank">SAAS</a> · Generalized Bayes Inference</p>
+    </div>
+</header>
 
 <div class="container">
     <!-- About Section -->
@@ -476,49 +571,48 @@ header h1, header p {
         </h2>
         <!-- 已发表论文 -->
         <div class="pub-item">
-    <div class="pub-title">
-        Online student-<em>t</em> processes with an overall-local scale structure for modelling non-stationary data
-    </div>
-    <div class="pub-meta">
-        <strong>Sha, T.</strong> and Zhang, M. M. (2025). In <em>The 28th International Conference on Artificial Intelligence and Statistics (AISTATS 2025)</em>.
-    </div>
-    <div class="pub-links">
-        <a href="https://raw.githubusercontent.com/mlresearch/v258/main/assets/sha25a/sha25a.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
-        <a href="https://github.com/stlllll/TP-MOE" target="_blank"><i class="fab fa-github"></i> Code</a>
-        <a href="https://github.com/stlllll/TP-MOE/blob/main/poster.pdf" target="_blank"><i class="fas fa-chalkboard"></i> Poster</a>
-    </div>
-    <div class="poster-note">
-        <i class="fas fa-chalkboard"></i> Presented as Poster at AISTATS 2025 & AABI 2025
-    </div>
-    <div class="abstract-text">
-        <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
-        Mixture-of-expert (MOE) models are popular methods in machine learning, since they can model heterogeneous behaviour across the space of the data using an ensemble collection of learners. These models are especially useful for modelling dynamic data as time-dependent data often exhibit non-stationarity and heavy-tailed errors, which may be inappropriate to model with a typical single expert model. We propose a mixture of Student-<em>t</em> processes with an adaptive structure for the covariance and noise behaviour for each mixture. Moreover, we use a sequential Monte Carlo (SMC) sampler to perform online inference as data arrive in real time. We demonstrate the superiority of our proposed approach over other models on synthetic and real-world datasets to prove the necessity of the novel method.
-    </div>
-</div>
+            <div class="pub-title">
+                Online student-<em>t</em> processes with an overall-local scale structure for modelling non-stationary data
+            </div>
+            <div class="pub-meta">
+                <strong>Sha, T.</strong> and Zhang, M. M. (2025). In <em>The 28th International Conference on Artificial Intelligence and Statistics (AISTATS 2025)</em>.
+            </div>
+            <div class="pub-links">
+                <a href="https://raw.githubusercontent.com/mlresearch/v258/main/assets/sha25a/sha25a.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                <a href="https://github.com/stlllll/TP-MOE" target="_blank"><i class="fab fa-github"></i> Code</a>
+                <a href="https://github.com/stlllll/TP-MOE/blob/main/poster.pdf" target="_blank"><i class="fas fa-chalkboard"></i> Poster</a>
+            </div>
+            <div class="poster-note">
+                <i class="fas fa-chalkboard"></i> Presented as Poster at AISTATS 2025 & AABI 2025
+            </div>
+            <div class="abstract-text">
+                <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
+                Mixture-of-expert (MOE) models are popular methods in machine learning, since they can model heterogeneous behaviour across the space of the data using an ensemble collection of learners. These models are especially useful for modelling dynamic data as time-dependent data often exhibit non-stationarity and heavy-tailed errors, which may be inappropriate to model with a typical single expert model. We propose a mixture of Student-<em>t</em> processes with an adaptive structure for the covariance and noise behaviour for each mixture. Moreover, we use a sequential Monte Carlo (SMC) sampler to perform online inference as data arrive in real time. We demonstrate the superiority of our proposed approach over other models on synthetic and real-world datasets to prove the necessity of the novel method.
+            </div>
+        </div>
 
         <!-- 工作论文 -->
-<div class="pub-item">
-    <div class="pub-title">
-        Smoothing the posterior bootstrap with greedy empirical Bayesian trees
-    </div>
-    <div class="author-list">
-        <i class="fas fa-users"></i> Taole Sha, Shibo Yu, Edwin Fong<sup>∗</sup>    <span class="corr-star">∗ corresponding author</span>
-        <span style="background:#eef2ff; padding:0.1rem 0.5rem; border-radius:30px; font-size:0.7rem; margin-left:0.6rem;">In preparation</span>
-    </div>
-    <div class="abstract-text">
-        <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
-        Conventional Bayesian inference faces challenges regarding model misspecification and computational efficiency, especially in modern settings where datasets are increasingly large and high-dimensional. Within the nonparametric learning framework, the posterior bootstrap has become a viable alternative to posterior sampling due to its robustness and scalability. However, most existing methods are built on the Dirichlet process and its variants, which are known to produce posterior samples of the underlying distribution which are discrete. This discrete nature prohibits the inference of parameters which require the underlying distribution to have a density, and furthermore impede the existence of the posterior predictive density. In this work, we propose the <strong>partition posterior bootstrap (PPB)</strong>: a smooth nonparametric learning method which relies on a data-adaptive partition of the sample space parametrized by a binary tree. Conditioned on this partition, posterior sampling involves a scalable posterior bootstrap which does not require Markov chain Monte Carlo. A key advantage of our method is that the tree partition can be learnt in a greedy empirical Bayesian manner from the corresponding marginal likelihood, which is both highly computationally efficient and theoretically tractable. Our proposed method can thus be regarded as a default and efficient nonparametric learning method for posterior inference and prediction when smoothness of the underlying distribution is required, especially for high-dimensional datasets. We demonstrate its excellent performance in both simulated and real-world datasets.
-    </div>
-    <div class="poster-note" style="margin-top: 0.8rem;">
-        <i class="fas fa-chalkboard"></i> Accepted as a poster at ISBA 2026 (International Society for Bayesian Analysis World Meeting)
-    </div>
-</div>
+        <div class="pub-item">
+            <div class="pub-title">
+                Smoothing the posterior bootstrap with greedy empirical Bayesian trees
+            </div>
+            <div class="author-list">
+                <i class="fas fa-users"></i> Taole Sha, Shibo Yu, Edwin Fong<sup>∗</sup>    <span class="corr-star">∗ corresponding author</span>
+                <span style="background:#eef2ff; padding:0.1rem 0.5rem; border-radius:30px; font-size:0.7rem; margin-left:0.6rem;">In preparation</span>
+            </div>
+            <div class="abstract-text">
+                <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
+                Conventional Bayesian inference faces challenges regarding model misspecification and computational efficiency, especially in modern settings where datasets are increasingly large and high-dimensional. Within the nonparametric learning framework, the posterior bootstrap has become a viable alternative to posterior sampling due to its robustness and scalability. However, most existing methods are built on the Dirichlet process and its variants, which are known to produce posterior samples of the underlying distribution which are discrete. This discrete nature prohibits the inference of parameters which require the underlying distribution to have a density, and furthermore impede the existence of the posterior predictive density. In this work, we propose the <strong>partition posterior bootstrap (PPB)</strong>: a smooth nonparametric learning method which relies on a data-adaptive partition of the sample space parametrized by a binary tree. Conditioned on this partition, posterior sampling involves a scalable posterior bootstrap which does not require Markov chain Monte Carlo. A key advantage of our method is that the tree partition can be learnt in a greedy empirical Bayesian manner from the corresponding marginal likelihood, which is both highly computationally efficient and theoretically tractable. Our proposed method can thus be regarded as a default and efficient nonparametric learning method for posterior inference and prediction when smoothness of the underlying distribution is required, especially for high-dimensional datasets. We demonstrate its excellent performance in both simulated and real-world datasets.
+            </div>
+            <div class="poster-note" style="margin-top: 0.8rem;">
+                <i class="fas fa-chalkboard"></i> Accepted as a poster at ISBA 2026 (International Society for Bayesian Analysis World Meeting)
+            </div>
+        </div>
     </section>
 
     <!-- Teaching Section -->
     <section id="teaching">
         <h2><i class="fas fa-person-chalkboard"></i> Teaching Assistant</h2>
-        
         <div class="timeline-item">
             <div class="timeline-header">
                 <span class="timeline-title">STAT6011: Computational statistics and Bayesian learning 
@@ -622,22 +716,46 @@ header h1, header p {
 </footer>
 
 <script>
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                const offset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
+    (function() {
+        // 获取固定导航栏元素
+        const navbar = document.getElementById('mainNav');
+        // 获取所有需要滚动补偿的section (id对应锚点)
+        const sections = document.querySelectorAll('section[id]');
+        
+        // 更新body的padding-top，避免固定导航栏遮挡内容；同时更新每个section的scroll-margin-top
+        function updateScrollOffset() {
+            if (!navbar) return;
+            const navHeight = navbar.offsetHeight;
+            // 为body设置padding-top，使页面内容不会被固定栏遮挡
+            document.body.style.paddingTop = navHeight + 'px';
+            
+            // 优雅滚动偏移: 设置每个section的scroll-margin-top 使得锚点跳转后完全显示在导航栏下方
+            const extraOffset = 20; // 额外留白，更舒适
+            const scrollMargin = navHeight + extraOffset;
+            sections.forEach(section => {
+                section.style.scrollMarginTop = scrollMargin + 'px';
+            });
+            
+            // 额外处理header的视觉关系（可选，保持原有颜值）
+            // 保证第一个section不受影响
+        }
+        
+        // 页面启动时执行，监听resize以应对窗口变化导致导航换行高度改变
+        function init() {
+            updateScrollOffset();
+            window.addEventListener('resize', () => {
+                updateScrollOffset();
+            });
+            // 页面加载完成后再校验一次（图片等可能影响布局微小变化）
+            window.addEventListener('load', () => {
+                updateScrollOffset();
+            });
+        }
+        
+        // 由于存在平滑滚动+scroll-margin-top策略，完全依赖原生锚点行为，无需额外干预。
+        // 删除旧式js干预，避免冲突，保留最纯净的滚动体验
+        init();
+    })();
 </script>
 </body>
 </html>
