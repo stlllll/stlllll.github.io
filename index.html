@@ -522,6 +522,23 @@ background-repeat: no-repeat;
                 margin-right: 3px;
             }
         }
+
+        .abstract-toggle { margin-top: 0.8rem; }
+        .abstract-toggle summary {
+            cursor: pointer;
+            color: #1e3a5f;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: fit-content;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+        }
+        .abstract-toggle summary:hover { background: #eef2ff; }
+        .abstract-toggle summary:focus-visible {
+            outline: 2px solid #2c6e9e;
+            outline-offset: 3px;
+        }
+        .pub-meta .corr-star { font-size: 0.8rem; margin-left: 0.5rem; }
     </style>
 </head>
 <body>
@@ -586,12 +603,15 @@ background-repeat: no-repeat;
                 <a href="https://github.com/stlllll/TP-MOE/blob/main/poster.pdf" target="_blank"><i class="fas fa-chalkboard"></i> Poster</a>
             </div>
             <div class="poster-note">
-                <i class="fas fa-chalkboard"></i> Presented as Poster at AISTATS 2025 & AABI 2025
+                <i class="fas fa-chalkboard"></i> Presented as a poster at AISTATS 2025 &amp; AABI 2025
             </div>
-            <div class="abstract-text">
+            <details class="abstract-toggle">
+                <summary>Abstract</summary>
+                <div class="abstract-text">
                 <i class="fas fa-quote-left" style="margin-right:6px; opacity:0.6;"></i> 
                 Mixture-of-expert (MOE) models are popular methods in machine learning, since they can model heterogeneous behaviour across the space of the data using an ensemble collection of learners. These models are especially useful for modelling dynamic data as time-dependent data often exhibit non-stationarity and heavy-tailed errors, which may be inappropriate to model with a typical single expert model. We propose a mixture of Student-<em>t</em> processes with an adaptive structure for the covariance and noise behaviour for each mixture. Moreover, we use a sequential Monte Carlo (SMC) sampler to perform online inference as data arrive in real time. We demonstrate the superiority of our proposed approach over other models on synthetic and real-world datasets to prove the necessity of the novel method.
             </div>
+            </details>
         </div>
 
         <!-- 工作论文 -->
@@ -599,21 +619,25 @@ background-repeat: no-repeat;
             <div class="pub-title">
                 Greedy Empirical Bayes for Density Estimation
             </div>
-            <div class="author-list">
-                <i class="fas fa-users"></i> Taole Sha, Shibo Yu, Edwin Fong<sup>∗</sup>    <span class="corr-star">∗ corresponding author</span>
-                <span style="background:#eef2ff; padding:0.1rem 0.5rem; border-radius:30px; font-size:0.7rem; margin-left:0.6rem;">Preprint (2026)</span>
+            <div class="pub-meta">
+                <strong>Sha, T.</strong>, Yu, S., and Fong, E.<sup>∗</sup> (2026). <em>Preprint.</em>
+                <span class="corr-star">∗ corresponding author</span>
             </div>
             <div class="pub-links">
                 <a href="https://arxiv.org/abs/2611.22796" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> arXiv</a>
                 <a href="https://arxiv.org/pdf/2611.22796" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://github.com/stlllll/GEB_density" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
             </div>
-            <div class="abstract-text">
-                Bayesian nonparametric density estimation is challenging in high dimensions, where traditional approaches like the Dirichlet process (DP) mixture rely on computationally intensive Markov chain Monte Carlo or approximations. We introduce the partition posterior bootstrap (PPB), where a flexible prior is constructed by smoothing a DP over a partition of the sample space. Conditioned on this partition, exact posterior sampling reduces to a simple Bayesian bootstrap-like algorithm. Importantly, we select the partition using a greedy empirical Bayes (GEB) algorithm which scales to high dimensions and large sample sizes. GEB greedily maximizes the closed-form marginal likelihood via local split decisions arising naturally from its factorization, yielding an adaptive binary tree partition. Our key theoretical result is that the GEB tree belongs to an admissible family with high probability, splitting all identifiable signals while avoiding over-splitting noise. As a result, the PPB posterior with the GEB tree attains adaptive contraction rates. Our theory holds under weak, verifiable assumptions, which we demonstrate in numerous examples. Empirically, PPB delivers accurate density estimates and uncertainty quantification at a fraction of the computational cost of other approaches, making it a practical off-the-shelf choice for high-dimensional Bayesian density estimation with theoretical guarantees.
-            </div>
-            <div class="poster-note" style="margin-top: 0.8rem;">
+            <div class="poster-note">
                 <i class="fas fa-chalkboard"></i> Presented as a poster at ISBA 2026 (International Society for Bayesian Analysis World Meeting)
             </div>
-        </div>
+                    <details class="abstract-toggle">
+                <summary>Abstract</summary>
+                <div class="abstract-text">
+                Bayesian nonparametric density estimation is challenging in high dimensions, where traditional approaches like the Dirichlet process (DP) mixture rely on computationally intensive Markov chain Monte Carlo or approximations. We introduce the partition posterior bootstrap (PPB), where a flexible prior is constructed by smoothing a DP over a partition of the sample space. Conditioned on this partition, exact posterior sampling reduces to a simple Bayesian bootstrap-like algorithm. Importantly, we select the partition using a greedy empirical Bayes (GEB) algorithm which scales to high dimensions and large sample sizes. GEB greedily maximizes the closed-form marginal likelihood via local split decisions arising naturally from its factorization, yielding an adaptive binary tree partition. Our key theoretical result is that the GEB tree belongs to an admissible family with high probability, splitting all identifiable signals while avoiding over-splitting noise. As a result, the PPB posterior with the GEB tree attains adaptive contraction rates. Our theory holds under weak, verifiable assumptions, which we demonstrate in numerous examples. Empirically, PPB delivers accurate density estimates and uncertainty quantification at a fraction of the computational cost of other approaches, making it a practical off-the-shelf choice for high-dimensional Bayesian density estimation with theoretical guarantees.
+            </div>
+            </details>
+</div>
     </section>
 
     <!-- Teaching Section -->
@@ -646,7 +670,7 @@ background-repeat: no-repeat;
                 <span class="timeline-title">STAT4610: Bayesian Learning 
                     <a href="https://webapp.science.hku.hk/sr4/servlet/enquiry?Type=Course&course_code=STAT4610" target="_blank" class="course-link"><i class="fas fa-external-link-alt"></i> syllabus</a>
                 </span>
-                <span class="timeline-date">Fall 2025</span>
+                <span class="timeline-date">Fall 2025 &amp; Fall 2026</span>
             </div>
             <div class="timeline-sub">The University of Hong Kong</div>
         </div>
@@ -688,6 +712,8 @@ background-repeat: no-repeat;
             <div class="song-card"><a href="http://xhslink.com/o/3rPue4LmM98" target="_blank"><i class="fab fa-tiktok"></i> cover《夜夜夜夜》</a></div>
             <div class="song-card"><a href="http://xhslink.com/o/2AShP5TJ2dx" target="_blank"><i class="fab fa-tiktok"></i> cover《好久不见》</a></div>
             <div class="song-card"><a href="http://xhslink.com/o/1CO3IJCF4Iu" target="_blank"><i class="fab fa-tiktok"></i> cover《十年》</a></div>
+            <div class="song-card"><a href="https://xhslink.cn/o/reLi6GuMZP" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> cover《在水一方》</a></div>
+            <div class="song-card"><a href="https://xhslink.cn/o/84L9xkPEqVY" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> cover《假如爱有天意》</a></div>
         </div>
         <div class="singing-friend">
             <span class="friend-link">
